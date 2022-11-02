@@ -1,0 +1,62 @@
+' ******************************************************************************
+' swxJRNL.swj - journal recorded on 04/11/21 by USER
+' *****************************************************************************
+Dim swApp As Object
+
+Dim Part As Object
+Dim boolstatus As Boolean
+Dim longstatus As Long, longwarnings As Long
+
+Sub main()
+
+Set swApp = Application.SldWorks
+
+swApp.ActivateDoc2 "EXPLODED_VIEW  BILL OF MATERIALS - Sheet1", False, longstatus
+Set Part = swApp.ActiveDoc
+Set Part = swApp.ActiveDoc
+Dim myModelView As Object
+Set myModelView = Part.ActiveView
+myModelView.FrameLeft = 0
+myModelView.FrameTop = 0
+Set myModelView = Part.ActiveView
+myModelView.FrameState = swWindowState_e.swWindowMaximized
+Set myModelView = Part.ActiveView
+myModelView.FrameState = swWindowState_e.swWindowMaximized
+
+' Pan
+Dim swModelView As Object
+Set swModelView = Part.ActiveView
+swModelView.TranslateBy -0.07637142857142854846, -0.00459642857142857509
+boolstatus = Part.ActivateView("Drawing View1")
+boolstatus = Part.Extension.SelectByID2("DetailItem233@Drawing View1", "NOTE", 0.1640297662029760184, 0.08168812794627058893, 0, False, 0, Nothing, 0)
+boolstatus = Part.ActivateSheet("Sheet1")
+boolstatus = Part.Extension.SelectByID2("Sheet1", "SHEET", 0.1870888432178831884, 0.1370861544333036586, 0, False, 0, Nothing, 0)
+boolstatus = Part.ActivateView("Drawing View1")
+boolstatus = Part.Extension.SelectByID2("DetailItem234@Drawing View1", "NOTE", 0.153343852464360525, 0.07156463072021379546, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("DetailItem234@Drawing View1", "NOTE", 0.1157586427471275076, 0.07355350627845132216, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("DetailItem234@Drawing View1", "NOTE", 0.1136505932026297683, 0.07295120640859482919, 0, False, 0, Nothing, 0)
+boolstatus = Part.Extension.SelectByID2("Drawing View1", "DRAWINGVIEW", 0.1192070046709367559, 0.07079891567933646601, 0, False, 0, Nothing, 0)
+boolstatus = Part.ActivateSheet("Sheet1")
+boolstatus = Part.Extension.SelectByID2("Sheet1", "SHEET", 0.202768741909184369, 0.09240519968394797501, 0, False, 0, Nothing, 0)
+
+' Zoom To Fit
+Part.ViewZoomtofit2
+
+' Zoom To Fit
+Part.ViewZoomtofit2
+
+' Zoom To Fit
+Part.ViewZoomtofit2
+
+' Save
+Dim swErrors As Long
+Dim swWarnings As Long
+boolstatus = Part.Save3(1, swErrors, swWarnings)
+Part.ClearSelection2 True
+
+' Close Document
+swDrawing = Nothing
+Set Part = Nothing
+swApp.CloseDoc "EXPLODED_VIEW  BILL OF MATERIALS - Sheet1"
+swApp.ExitApp
+End Sub
